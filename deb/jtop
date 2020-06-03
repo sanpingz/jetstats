@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+readonly JETSTATS_ROOT="${JETSTATS_ROOT:-/opt/jetstats}"
+
+if [[ ! -d "${JETSTATS_ROOT}" ]]; then
+    echo "Jetstats root ${JETSTATS_ROOT} not exists" >&2
+    exit 1
+fi
+
+(
+    cd "${JETSTATS_ROOT}" && PATH=$PATH:"$(pwd)/scripts" python3 -c 'from jtop.__main__ import main; main()'
+)
+~
