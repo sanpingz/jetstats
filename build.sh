@@ -181,7 +181,7 @@ function main() {
     info "Start building deb ${dist_name} ..."
 
     rm -rf "${build_dir}"
-    mkdir -p "${build_dir}/DEBIAN" "${target_dir}" "${DIST_DIR}"
+    mkdir -p "${build_dir}/DEBIAN" "${target_dir}" "${bin_dir}" "${DIST_DIR}"
 
     cat > "${build_dir}/DEBIAN/control" <<-EOF
 Package: ${NAME}
