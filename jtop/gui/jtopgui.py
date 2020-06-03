@@ -46,9 +46,9 @@ class Page(ABC):
         height, width = self.stdscr.getmaxyx()
         first = 0
         # Remove a line for sudo header
-        if self.jetson.userid != 0:
-            height -= 1
-            first = 1
+        # if self.jetson.userid != 0:
+        #     height -= 1
+        #     first = 1
         return height, width, first
 
     @abc.abstractmethod
@@ -193,12 +193,12 @@ class JTOPGUI:
         board = self.jetson.board["info"]
         # Add extra Line if without sudo
         idx = 0
-        if self.jetson.userid != 0:
-            _, width = self.stdscr.getmaxyx()
-            self.stdscr.addstr(0, 0, ("{0:<" + str(width) + "}").format(" "), curses.color_pair(11))
-            string_sudo = "SUDO SUGGESTED"
-            self.stdscr.addstr(0, (width - len(string_sudo)) // 2, string_sudo, curses.color_pair(11))
-            idx = 1
+        # if self.jetson.userid != 0:
+        #     _, width = self.stdscr.getmaxyx()
+        #     self.stdscr.addstr(0, 0, ("{0:<" + str(width) + "}").format(" "), curses.color_pair(11))
+        #     string_sudo = "SUDO SUGGESTED"
+        #     self.stdscr.addstr(0, (width - len(string_sudo)) // 2, string_sudo, curses.color_pair(11))
+        #     idx = 1
         self.stdscr.addstr(idx, 0, board["Machine"] + " - Jetpack " + board["Jetpack"], curses.A_BOLD)
 
     @check_curses
@@ -215,8 +215,8 @@ class JTOPGUI:
         self.stdscr.addstr(height - 1, position, "Q", curses.A_REVERSE | curses.A_BOLD)
         self.stdscr.addstr(height - 1, position + 1, "uit ", curses.A_REVERSE)
         # Author name
-        name_author = "Raffaello Bonghi"
-        self.stdscr.addstr(height - 1, width - len(name_author), name_author, curses.A_REVERSE)
+        # name_author = "Raffaello Bonghi"
+        # self.stdscr.addstr(height - 1, width - len(name_author), name_author, curses.A_REVERSE)
 
     def event_menu(self, mx, my):
         height, _ = self.stdscr.getmaxyx()
