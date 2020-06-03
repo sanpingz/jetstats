@@ -10,4 +10,3 @@ fi
 (
     cd "${JETSTATS_ROOT}" && PATH=$PATH:"$(pwd)/scripts" python3 -c 'from jtop.__main__ import main; main()'
 )
-~
